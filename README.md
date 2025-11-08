@@ -65,6 +65,5 @@ All results are shown in MATLAB figures and can be exported as PDF or images for
 ├── parametre_am.m # Main MATLAB script with calculations and plots
 ├── README.md # Project documentation
 └── LICENSE.txt # Custom non-commercial license
-
 ---
 
