@@ -74,7 +74,11 @@ Tiw = Trw / Krw;
 
 %% Voltage limiter at inverter output
 Ulim = 380;
-
+%% Eunsure output folder exists
+output_folder = 'img';
+if ~exist(output_folder, 'dir')
+    mkdir(output_folder);
+end
 %% Direct-on-line connection of the induction motor
 sim("model_am_direct.slx");
 
@@ -87,7 +91,7 @@ legend(sprintf('\\omega_{sim} = %.2f rad/s', wn_val), ...
 ylabel('\omega (rad/s)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Simulated and reference angular velocity of the induction motor')
-
+saveas(gcf, fullfile(output_folder, 'direct_velocity.png'))
 %% Phase currents (Direct-on-line)
 figure(2)
 plot(Time, ia, 'r', Time, ib, 'b', Time, ic, 'g', 'LineWidth', 1.5)
@@ -99,10 +103,9 @@ legend(sprintf('I_a = %.2f A', Ia_val), ...
 ylabel('Current (A)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Phase currents during direct-on-line connection')
-
+saveas(gcf, fullfile(output_folder, 'direct_currents.png'))
 %% Scalar (V/f) control of induction motor
 sim("model_am_scalar.slx");
-
 figure(3)
 plot(Time_scalar, ia_scalar, 'r', Time_scalar, ib_scalar, 'b', Time_scalar, ic_scalar, 'g', 'LineWidth', 0.5)
 grid minor
@@ -110,7 +113,7 @@ legend('I_a', 'I_b', 'I_c', 'Location', 'best');
 ylabel('Current (A)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Phase currents under scalar (V/f) control')
-
+saveas(gcf, fullfile(output_folder, 'scalar_currents.png'))
 figure(4)
 plot(Time, omega_scalar, 'r', 'LineWidth', 2.5)
 grid minor
@@ -119,10 +122,9 @@ legend(sprintf('\\omega_{V/F} = %.2f rad/s', omega_scalar_val));
 ylabel('\omega (rad/s)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Simulated and reference angular velocity (V/f control)')
-
+saveas(gcf, fullfile(output_folder, 'scalar_velocity.png'))
 %% Vector (Field-Oriented) control
 sim("model_am_FOC.slx");
-
 figure(5)
 plot(Time_FOC, ia_FOC, 'r', Time_FOC, ib_FOC, 'b', Time_FOC, ic_FOC, 'g', 'LineWidth', 1.5)
 grid minor
@@ -134,7 +136,7 @@ legend(sprintf('I_{a} = %.2f A', Ia_FOC_val), ...
 ylabel('Current (A)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Phase currents under vector control')
-
+saveas(gcf, fullfile(output_folder, 'vector_currents.png'))
 %% Speed and torque comparison under vector control
 figure(6)
 subplot(2,1,1)
@@ -144,14 +146,13 @@ legend('w_{actual}', 'w_{reference}', 'Location', 'best');
 ylabel('Speed (rad/s)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Actual vs Reference Speed under Vector Control')
-
 subplot(2,1,2)
 plot(Time_FOC, Torque_FOC, 'r', 'Linewidth', 2.5)
 grid minor
 ylabel('Torque (Nm)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Electromagnetic Torque under Vector Control')
-
+saveas(gcf, fullfile(output_folder, 'vector_speed_torque.png'))
 %% Detailed comparison plots
 figure(7)
 subplot(2,2,1)
@@ -183,3 +184,4 @@ grid minor
 ylabel('\phi_{2m} (rad)', 'FontWeight', 'bold')
 xlabel('Time (s)', 'FontWeight', 'bold')
 title('Magnetic flux angle \phi_{2m} under vector control')
+saveas(gcf, fullfile(output_folder, 'vector_detailed_comparison.png'))
