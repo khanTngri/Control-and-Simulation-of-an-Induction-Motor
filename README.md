@@ -58,12 +58,5 @@ All results are shown in MATLAB figures and can be exported as PDF or images for
 ---
 
 ## 📂 Repository Structure
-📦 Induction_Motor_Control
-├── model_am_priame.slx # Direct-on-line model
-├── model_am_skalarne.slx # Scalar (V/f) control model
-├── model_am_vektor.slx # Vector (FOC) control model
-├── parametre_am.m # Main MATLAB script with calculations and plots
-├── README.md # Project documentation
-└── LICENSE.txt # Custom non-commercial license
----
+📦 Induction_Motor_Control ├── model_am_priame.slx # Direct-on-line model ├── model_am_skalarne.slx # Scalar (V/f) control model ├── model_am_vektor.slx # Vector (FOC) control model ├── parametre_am.m # Main MATLAB script with calculations and plots ├── README.md # Project documentation └── LICENSE.txt # Custom non-commercial license
 
