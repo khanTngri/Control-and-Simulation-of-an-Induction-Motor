@@ -3,7 +3,7 @@
 **Author:** Ing. Yevgeniy Makarenko  
 **Year:** 2025  
 **License:** Custom Non-Commercial License  
-**Contact:** [e.makarenko.em49@gmail.com](mailto:e.makarenko.em49@gmail.com)
+**Contact:** [theshine777@gmail.com](mailto:theshine777@gmail.com)
 
 ---
 
